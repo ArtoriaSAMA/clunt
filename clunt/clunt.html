@@ -1,0 +1,227 @@
+<!DOCTYPE>
+<html>
+
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="./webuploader.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!--<link rel="stylesheet" href="./lib/zebradatepicker/zebra.datepicker.css">-->
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ececec;
+        }
+        
+        .main {
+            width: 300px;
+            height: 50%;
+            /*background-color: #ececec;*/
+        }
+        
+        .clunt-select {
+            position: relative;
+            cursor: default;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .clunt-select .clunt-select-show {
+            line-height: 32px;
+            padding: 0 12px;
+            background: #fff;
+            border: #ececec solid 1px;
+            border-radius: 3px;
+        }
+        
+        .clunt-select .clunt-select-show::after {
+            content: '';
+            position: absolute;
+            top: 15px;
+            right: 11px;
+            width: 0;
+            height: 0;
+            border-top: 4px solid #a0a0a0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+        }
+        
+        .clunt-select .clunt-select-options {
+            display: none;
+        }
+        
+        .open .clunt-select-options {
+            display: block;
+        }
+        
+        .clunt-select .clunt-select-list {
+            width: 100%;
+            background: #fff;
+            border-radius: 3px;
+            color: #666;
+            box-shadow: 0 2px 3px rgba(9, 2, 4, 0.08);
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            position: absolute;
+            z-index: 9;
+        }
+        
+        .clunt-select .clunt-select-options .clunt-item {
+            padding: 9px 12px;
+            word-break: break-all;
+        }
+        
+        .clunt-select .clunt-select-options .clunt-group {
+            padding: 9px 12px;
+            position: relative;
+        }
+        
+        .clunt-select .clunt-select-options .clunt-group::after {
+            content: '';
+            position: absolute;
+            top: 13px;
+            right: 11px;
+            width: 0;
+            height: 0;
+            border-left: 4px solid #a0a0a0;
+            border-top: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+        }
+        
+        .clunt-select .clunt-select-options .clunt-group .clunt-item-list {
+            display: none;
+            position: absolute;
+            left: 100%;
+            top: 0;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            background: #fff;
+            border-radius: 3px;
+            color: #666;
+            box-shadow: 0 2px 3px rgba(9, 2, 4, 0.08);
+            z-index: 9;
+            min-width: 120px;
+        }
+        
+        .clunt-select .clunt-select-options .hover {
+            background-color: #333c49;
+            color: #fff;
+        }
+        
+        .clunt-select .clunt-select-options .clunt-select-list:hover .hover {
+            background-color: #fff;
+            color: #666;
+        }
+        
+        .clunt-select .clunt-select-options .clunt-item:not(.disabled):hover {
+            background-color: #333c49;
+            color: #fff;
+            cursor: pointer;
+        }
+        
+        .clunt-select .clunt-select-options .disabled {
+            color: #999;
+        }
+        
+        .clunt-select .clunt-select-options .clunt-group:hover {
+            background-color: #333c49;
+            color: #fff;
+            cursor: pointer;
+        }
+        
+        .clunt-select .clunt-select-options .clunt-group .clunt-item:hover {
+            background-color: #333c49;
+            color: #fff;
+        }
+        /*.clunt-select .clunt-select-show:hover+.clunt-select-options {
+            display: block;
+        }*/
+    </style>
+
+    <style>
+        .clunt-input {
+            width: 100%;
+            height: 34px;
+            background-color: #fff;
+            border: #ececec solid 1px;
+            border-radius: 3px;
+            padding: 0 12px;
+        }
+        
+        .clunt-input-panel {
+            color: #666;
+            position: relative;
+            display: none;
+        }
+        
+        .clunt-input-panel .clunt-input-list {
+            width: 100%;
+            background-color: #fff;
+            border-radius: 3px;
+            box-shadow: 0 2px 3px rgba(9, 2, 4, 0.08);
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            position: absolute;
+            z-index: 9;
+        }
+        
+        .clunt-input-panel .clunt-input-list .on {
+            background-color: #333c49;
+            color: #fff;
+        }
+        
+        .clunt-input-panel .clunt-input-list .clunt-input-item {
+            padding: 9px 12px;
+            word-break: break-all;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <select name="one" id="one" data-placeholder="请选择">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3" disabled>11111111111111111111111111111111111111111</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+        </select>
+
+        <select name="thr" id="thr" data-placeholder="请选择">
+            <option value="1">11111111111</option>
+            <option value="1">1</option>
+            <option value="1">1</option>
+            <optgroup label="test">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            </optgroup>
+            <optgroup label="test1">
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </optgroup>
+            <option value="1">1</option>
+            <option value="1">1</option>
+        </select>
+
+        <input type="text" class="clunt-input" id="clunt-input" />
+
+        <input type="text" class="clunt-input" id="cluntdate" />
+    </div>
+
+    <script src="./lib/jquery.js"></script>
+    <!--<script src="./lib/zebradatepicker/zebra.datepicker.js"></script>-->
+    <script type="text/javascript" src="./clunt.js"></script>
+</body>
+
+</html>
