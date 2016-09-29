@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8" />
+
+<head>
+    <title>模态框</title>
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .mine-modal {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 10;
+        }
+        
+        .mine-modal .mine-modal-dialog {
+            width: 50%;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+        
+        .mine-modal .mine-modal-dialog .mine-modal-header {
+            text-align: center;
+            line-height: 45px;
+            position: relative;
+            font-weight: bold;
+        }
+        
+        .mine-modal .mine-modal-dialog .mine-modal-header .mine-modal-cls {
+            position: absolute;
+            top: 0;
+            right: 10px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        
+        .fade {
+            opacity: 0;
+            -webkit-transition: opacity .15s linear;
+            -o-transition: opacity .15s linear;
+            transition: opacity .15s linear;
+        }
+        
+        .in {
+            opacity: 1;
+        }
+
+        .mine-modal.fade .mine-modal-dialog{
+            transition:transform .3s ease-out;
+            transform: translate(0, -25%);
+        }
+        
+        .mine-modal.in .mine-modal-dialog {
+            transform: translate(0, 0);
+        }
+    </style>
+</head>
+<input type="button" id="openbtn" value="click" />
+
+<body>
+
+    <script src="./lib/jquery.js"></script>
+    <script src="./modal.js"></script>
+</body>
+
+</html>
